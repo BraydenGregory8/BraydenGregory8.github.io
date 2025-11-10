@@ -158,13 +158,13 @@ describe('Circularity', function() {
         });
 
         it('should move a circle to offscreen-right after moving offscreen-left', function() {
-            circle = { x: -5, y: 1, radius: 1 };
+            circle = { x: -5, y: 1, radius: 4 };
             checkCirclePosition(circle);
             expect(circle.x === canvas.width + circle.radius).to.be.true;
         });
 
         it('should move a circle to offscreen-top after moving offscreen-bottom', function() {
-            circle = { x: 1, y: canvas.height + 5, radius: 1 };
+            circle = { x: 1, y: canvas.height + 5, radius: 2 };
             checkCirclePosition(circle);
             expect(circle.y === -circle.radius).to.be.true;
         });

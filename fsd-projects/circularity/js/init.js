@@ -18,6 +18,7 @@ var init = function (window) {
     // TODO 1 : Declare and initialize our variables
     var circle;
     var circles = [];
+    
 
     // TODO 2 : Create a function that draws a circle
     function drawCircle() {
@@ -35,7 +36,7 @@ var init = function (window) {
     //drawCircle();
 
     // TODO 7 : Use a loop to create multiple circles
-    for (var i = 0; i < 25; i++) {
+    for (var i = 0; i < 100; i++) {
       drawCircle(i);
     }
     ///////////////////
@@ -92,6 +93,8 @@ var init = function (window) {
       if (circle.y > canvas.width) {
         circle.y = 0;
       }
+      
+      
       // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     };
 
