@@ -43,7 +43,7 @@ enemy.x = x;
 enemy.y = y;
 game.addGameItem(enemy);
 enemy.rotationalVelocity = 200;
-enemy.velocityX = -1;
+enemy.velocityX = -0.7;
 enemy.onPlayerCollision = function () {
   game.changeIntegrity(-50);
 };
@@ -65,7 +65,7 @@ reward.x = x;
 reward.y = y;
 game.addGameItem(reward);
 reward.rotationalVelocity = 200;
-reward.velocityX = -0.3;
+reward.velocityX = -0.8;
 reward.onPlayerCollision = function () {
   game.changeIntegrity(+50);
 };
@@ -75,8 +75,12 @@ reward.shrink();
 };
 };
 createReward(500, groundY-60)
+function createMarker(){
+  
+}
 
     function startLevel() {
+    }
       // TODO 13 goes below here
 
 
