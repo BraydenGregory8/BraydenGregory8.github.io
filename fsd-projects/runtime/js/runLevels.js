@@ -18,72 +18,86 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-   function createSawBlade(x,y){
-    var hitZoneSize = 25;
-var damageFromObstacle = 10;
-var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-sawBladeHitZone.x = x;
-sawBladeHitZone.y = y;
-game.addGameItem(sawBladeHitZone);
-var obstacleImage = draw.bitmap("img/sawblade.png");
-sawBladeHitZone.addChild(obstacleImage);
-obstacleImage.x = -24;
-obstacleImage.y = -27;
-   }
-createSawBlade(800,200)
-createSawBlade(900,270)
-createSawBlade(870,250)
- function createEnemy(x, y){
-var enemy = game.createGameItem("enemy", 25);
-var redSquare = draw.rect(50, 50, "purple");
-redSquare.x = -25;
-redSquare.y = -25;
-enemy.addChild(redSquare);
-enemy.x = x;
-enemy.y = y;
-game.addGameItem(enemy);
-enemy.rotationalVelocity = 200;
-enemy.velocityX = -0.7;
-enemy.onPlayerCollision = function () {
-  game.changeIntegrity(-50);
-};
- enemy.onProjectileCollision = function () {
-game.increaseScore(100);
-enemy.shrink();
-};
-  };
-  createEnemy(400, groundY -60);
-createEnemy(800, groundY - 60);
-createEnemy(1200, groundY - 60);
-function createReward(x, y){
-var reward = game.createGameItem("reward", 25);
-var rose = draw.rect(50, 50, "gold");
-rose.x = -25;
-rose.y = -25;
-reward.addChild(rose);
-reward.x = x;
-reward.y = y;
-game.addGameItem(reward);
-reward.rotationalVelocity = 200;
-reward.velocityX = -0.8;
-reward.onPlayerCollision = function () {
-  game.changeIntegrity(+50);
-};
- reward.onProjectileCollision = function () {
-game.increaseScore(100);
-reward.shrink();
-};
-};
-createReward(500, groundY-60)
-function createMarker(){
-  
-}
+    function createSawBlade(x, y) {
+      var hitZoneSize = 25;
+      var damageFromObstacle = 10;
+      var sawBladeHitZone = game.createObstacle(
+        hitZoneSize,
+        damageFromObstacle
+      );
+      sawBladeHitZone.x = x;
+      sawBladeHitZone.y = y;
+      game.addGameItem(sawBladeHitZone);
+      var obstacleImage = draw.bitmap("img/sawblade.png");
+      sawBladeHitZone.addChild(obstacleImage);
+      obstacleImage.x = -24;
+      obstacleImage.y = -27;
+    }
+    createSawBlade(800, 200);
+    createSawBlade(900, 270);
+    createSawBlade(870, 250);
+    function createEnemy(x, y) {
+      var enemy = game.createGameItem("enemy", 25);
+      var redSquare = draw.rect(50, 50, "purple");
+      redSquare.x = -25;
+      redSquare.y = -25;
+      enemy.addChild(redSquare);
+      enemy.x = x;
+      enemy.y = y;
+      game.addGameItem(enemy);
+      enemy.rotationalVelocity = 200;
+      enemy.velocityX = -1;
+      enemy.onPlayerCollision = function () {
+        game.changeIntegrity(-50);
+      };
+      enemy.onProjectileCollision = function () {
+        game.increaseScore(100);
+        enemy.shrink();
+      };
+    }
+    createEnemy(400, groundY - 60);
+    createEnemy(800, groundY - 60);
+    createEnemy(1200, groundY - 60);
+
+    function createReward(x, y) {
+      var reward = game.createGameItem("reward", 25);
+      var rose = draw.rect(50, 50, "gold");
+      rose.x = -25;
+      rose.y = -25;
+      reward.addChild(rose);
+      reward.x = x;
+      reward.y = y;
+      game.addGameItem(reward);
+      reward.rotationalVelocity = 200;
+      reward.velocityX = -0.8;
+      reward.onPlayerCollision = function () {
+        game.changeIntegrity(+50);
+      };
+      reward.onProjectileCollision = function () {
+        game.increaseScore(100);
+        reward.shrink();
+      };
+    }
+    createReward(500, groundY - 60);
+    function createMarker(x, y) {
+      var marker = game.createGameItem("marker", 25);
+      var lyre = draw.rect(50, 50, "gold");
+      lyre.x = -25;
+      lyre.y = -25;
+      marker.addChild(lyre);
+      marker.x = x;
+      marker.y = y;
+      game.addGameItem(marker);
+      marker.onProjectileCollision = function () {
+        startLevel;
+      };
+      marker.onPlayerCollision = function () {
+        startLevel;
+      };
+    }
 
     function startLevel() {
-    }
       // TODO 13 goes below here
-
-
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE
