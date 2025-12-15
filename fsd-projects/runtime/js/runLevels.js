@@ -81,7 +81,7 @@ var runLevels = function (window) {
     createReward(500, groundY - 60);
     function createMarker(x, y) {
       var reward = game.createGameItem("reward", 25);
-      var lyre = draw.rect(50, 50, "gold");
+      var lyre = draw.rect(50, 50, "green");
       lyre.x = -25;
       lyre.y = -25;
       reward.addChild(lyre);
@@ -102,6 +102,29 @@ var runLevels = function (window) {
 
     function startLevel() {
       // TODO 13 goes below here
+ var level = levelData[currentLevel];
+ var levelObjects = level.gameItems;
+ for(var i = 0; i >= levelObjects.length; i++){
+  var eachElement = levelObjects[i]; 
+  if(levelObjects[i].type === sawBlades){
+    createSawBlade(levelObjects[i].x,levelObjects[i].y);
+  }
+  else if(levelObjects[i].type === enemy){
+    createEnemy(levelObjects[i].x,levelObjects[i].y);
+  }
+  else if(levelObjects[i].type === reward){
+    createReward(levelObjects[i].x,levelObjects[i].y);
+  }
+else if(levelObjects[i].type === marker){
+  createMarker(levelObjects[i].x,levelObjects[i].y);
+}  
+
+
+ 
+  
+ }
+ 
+ 
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE

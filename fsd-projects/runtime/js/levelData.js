@@ -19,7 +19,9 @@ var makeLevelData = function (window) {
           { type: "sawblade", x: 600, y: groundY },
           { type: "sawblade", x: 900, y: groundY },
           { type: "reward", x: 2000, y: groundY - 60},
-          { type: "reward", x: 2000, y: groundY - 60},
+          { type: "enemy", x: 2000, y: groundY - 60},
+          { type: "marker", x: 2000, y: groundY - 60},
+
         ],
       },
       {
@@ -31,7 +33,8 @@ var makeLevelData = function (window) {
           { type: "sawblade", x: 600, y: groundY },
           { type: "sawblade", x: 900, y: groundY },
           { type: "reward", x: 2000, y: groundY - 60},
-          { type: "reward", x: 2000, y: groundY - 60},
+          { type: "enemy", x: 2000, y: groundY - 60},
+          { type: "marker", x: 2000, y: groundY - 60},
         ],
          name: "Robot Rampager",
         number: 3,
@@ -41,7 +44,8 @@ var makeLevelData = function (window) {
           { type: "sawblade", x: 600, y: groundY },
           { type: "sawblade", x: 900, y: groundY },
           { type: "reward", x: 2000, y: groundY - 60},
-          { type: "reward", x: 2000, y: groundY - 60},
+          { type: "enemy", x: 2000, y: groundY - 60},
+           { type: "marker", x: 2000, y: groundY - 60},
         ],
       },
     ];
