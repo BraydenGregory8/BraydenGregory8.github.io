@@ -80,21 +80,25 @@ var runLevels = function (window) {
     }
     createReward(500, groundY - 60);
     function createMarker(x, y) {
-      var marker = game.createGameItem("marker", 25);
+      var reward = game.createGameItem("reward", 25);
       var lyre = draw.rect(50, 50, "gold");
       lyre.x = -25;
       lyre.y = -25;
-      marker.addChild(lyre);
-      marker.x = x;
-      marker.y = y;
-      game.addGameItem(marker);
-      marker.onProjectileCollision = function () {
-        startLevel;
+      reward.addChild(lyre);
+      reward.x = x;
+      reward.y = y;
+      game.addGameItem(reward);
+      reward.rotationalVelocity = 0.6
+      reward.velocityX = -0.5;
+      reward.onPlayerCollision = function () {
+        startLevel()
       };
-      marker.onPlayerCollision = function () {
-        startLevel;
+      reward.onProjectileCollision = function () {
+        startLevel()
       };
+      
     }
+    createMarker(900,groundY -50)
 
     function startLevel() {
       // TODO 13 goes below here
