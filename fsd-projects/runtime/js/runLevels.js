@@ -88,43 +88,37 @@ var runLevels = function (window) {
       reward.x = x;
       reward.y = y;
       game.addGameItem(reward);
-      reward.rotationalVelocity = 0.6
+      reward.rotationalVelocity = 0.6;
       reward.velocityX = -0.5;
       reward.onPlayerCollision = function () {
-        startLevel()
+        startLevel();
       };
       reward.onProjectileCollision = function () {
-        startLevel()
+        startLevel();
       };
-      
     }
-    createMarker(900,groundY -50)
+    createMarker(900, groundY - 50);
 
     function startLevel() {
       // TODO 13 goes below here
- var level = levelData[currentLevel];
- var levelObjects = level.gameItems;
- for(var i = 0; i >= levelObjects.length; i++){
-  var eachElement = levelObjects[i]; 
-  if(levelObjects[i].type === sawBlades){
-    createSawBlade(levelObjects[i].x,levelObjects[i].y);
-  }
-  else if(levelObjects[i].type === enemy){
-    createEnemy(levelObjects[i].x,levelObjects[i].y);
-  }
-  else if(levelObjects[i].type === reward){
-    createReward(levelObjects[i].x,levelObjects[i].y);
-  }
-else if(levelObjects[i].type === marker){
-  createMarker(levelObjects[i].x,levelObjects[i].y);
-}  
-
-
- 
-  
- }
- 
- 
+      var level = levelData[currentLevel];
+      var levelObjects = level.gameItems;
+      for (var i = 0; i >= levelObjects.length; i++) {
+        var eachElement = levelObjects[i];
+        var gameItemObject = gameObjects[i];
+        var objectX = gameItemObject.x;
+        var objectY = gameItemObject.y;
+        var type = gameItemObject.type;
+        if (type === "sawblades") {
+          createSawBlade(objectX, objectY);
+        } else if (type === "enemy") {
+          createEnemy(objectX, objectY);
+        } else if (type === "reward") {
+          createReward(objectX, objectY);
+        } else if (type === "marker") {
+          createMarker(objectX, objectY);
+        }
+      }
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE
