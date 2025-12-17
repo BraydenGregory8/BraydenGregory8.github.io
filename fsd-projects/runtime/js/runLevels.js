@@ -99,7 +99,7 @@ var runLevels = function (window) {
         
       };
     }
-    
+    createMarker(1000, groundY- 30);
     
 
     function startLevel() {
