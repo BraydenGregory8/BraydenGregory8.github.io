@@ -20,7 +20,7 @@ var makeLevelData = function (window) {
           { type: "sawblade", x: 900, y: groundY },
           { type: "reward", x: 2000, y: groundY - 60},
           { type: "enemy", x: 2000, y: groundY - 60},
-          { type: "marker", x: 2000, y: groundY - 60},
+          { type: "marker", x: 200, y: groundY},
 
         ],
       },

@@ -79,6 +79,7 @@ var runLevels = function (window) {
       };
     }
     createReward(500, groundY - 60);
+    
     function createMarker(x, y) {
       var reward = game.createGameItem("reward", 25);
       var lyre = draw.rect(50, 50, "green");
@@ -98,7 +99,8 @@ var runLevels = function (window) {
         
       };
     }
-    createMarker(900, groundY - 50);
+    
+    
 
     function startLevel() {
       // TODO 13 goes below here
@@ -106,14 +108,16 @@ var runLevels = function (window) {
       var levelObjects = level.gameItems;
       for(var i = 0 ; i < levelObjects.length; i++){
         var eachObject = levelObjects[i];
+        eachObject.X
+        eachObject.Y;
         if(eachObject.type === "sawBlade"){
-            createSawBlade(eachObjectX, eachObjectY);
+          createSawBlade(eachObject.X, eachObject.Y);
         } else if (eachObject.type === "enemy") {
-          createEnemy(eachObjectX, eachObjectY);
+          createEnemy(eachObject.X, eachObject.Y);
         } else if (eachObject.type === "reward") {
-          createReward(eachObjectX, eachObjectY);
+          createReward(eachObject.X, eachObject.Y);
         } else if (eachObject.type === "marker") {
-          createMarker(eachObjectX, eachObjectY);
+          createMarker(eachObject.X, eachObject.Y);
         }
       }
       
