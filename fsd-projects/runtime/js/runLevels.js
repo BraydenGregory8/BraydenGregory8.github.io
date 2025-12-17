@@ -95,6 +95,7 @@ var runLevels = function (window) {
       };
       reward.onProjectileCollision = function () {
         startLevel();
+        
       };
     }
     createMarker(900, groundY - 50);
@@ -103,22 +104,19 @@ var runLevels = function (window) {
       // TODO 13 goes below here
       var level = levelData[currentLevel];
       var levelObjects = level.gameItems;
-      for (var i = 0; i >= levelObjects.length; i++) {
-        var eachElement = levelObjects[i];
-        var gameItemObject = gameObjects[i];
-        var objectX = gameItemObject.x;
-        var objectY = gameItemObject.y;
-        var type = gameItemObject.type;
-        if (type === "sawblades") {
-          createSawBlade(objectX, objectY);
-        } else if (type === "enemy") {
+      for(var i = 0 ; i < levelObjects.length; i++){
+        var eachObject = levelObjects[i];
+        if(eachObject === "sawBlade"){
+            createSawBlade(objectX, objectY);
+        } else if (eachObject === "enemy") {
           createEnemy(objectX, objectY);
-        } else if (type === "reward") {
+        } else if (eachObject === "reward") {
           createReward(objectX, objectY);
-        } else if (type === "marker") {
+        } else if (eachObject === "marker") {
           createMarker(objectX, objectY);
         }
       }
+      
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE
