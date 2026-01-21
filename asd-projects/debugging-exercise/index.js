@@ -1,3 +1,4 @@
+debugger;
 $(document).ready(function () {
   
 /////////////////
@@ -79,12 +80,13 @@ function decideSpeed() {
 }
 
 // this generates an id for a ghost given the ghost's number
+debugger;
 function getId(number) {
   return "ghost" + number; ()
 }
 
 // this adds a ghost into the HTML
-funtion addNewGhostElement(ghost, id) {
+function addNewGhostElement(ghost, id) {
   // this creates the HTML for a new ghost element
   var $ghost = $("<img>")
     .attr("id", id)
@@ -102,7 +104,7 @@ funtion addNewGhostElement(ghost, id) {
 //////////////////
 
 // this should move all of the ghosts
-function update) {
+function (update) {
   // loop over the ghosts array. We use the maxGhosts variable instead of ghosts.length
   // to make seeing issues in the debugger slightly easier (in practice, you should use
   // ghosts.length, but do NOT change it here)
@@ -136,7 +138,7 @@ function moveGhost(ghost) {
 // this bounces ghosts if they hit a wall
 function bounceGhost(ghost) {
   // this bounces off the left wall
-  if (ghost.x < 0{
+  if (ghost.x < 0){
     ghost.x -= ghost.speedX;
     ghost.speedX *= -1;
   }
