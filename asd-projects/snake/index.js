@@ -14,9 +14,12 @@ var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 
 // TODO 4, Part 1: Create the apple variable
+const apple ={};
+  
 
 
 // TODO 5, Part 1: Create the snake variable
+const snake = {};
 
 
 // Constant Variables
@@ -48,10 +51,18 @@ init();
 
 function init() {
   // TODO 5, Part 2: initialize the snake
-  
+  snake.body = []; 
+makeSnakeSquare(10, 10); 
+makeSnakeSquare(10, 9); 
+makeSnakeSquare(10, 8); 
+snake.head = snake.body[0];
   
   // TODO 4, Part 3: initialize the apple
-
+snake.body = [];
+makeSnakeSquare(10, 10);
+makeSnakeSquare(10, 9);
+makeSnakeSquare(10, 8);
+snake.head = snake.body[0];
 
   // TODO 6, Part 1: Initialize the interval
 
@@ -164,7 +175,29 @@ function handleAppleCollision() {
   var row = snake.tail.row;
   var column = snake.tail.column;
   
-  makeSnakeSquare(row, column);
+  makeSnakeSquare(row, column);{
+    // initialize a new snakeSquare Object
+const snakeSquare = {};
+
+// make the snakeSquare element and add it to the board
+snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
+
+// assign the row and column position
+snakeSquare.row = row;
+snakeSquare.column = column;
+
+// set the snake’s position visually
+repositionSquare(snakeSquare);
+
+// if this is the head, give it a unique ID
+if (snake.body.length === 0) {
+  snakeSquare.element.attr("id", "snake-head");
+}
+
+// add the square to the snake’s body and update the tail
+snake.body.push(snakeSquare);
+snake.tail = snakeSquare;
+  }
 }
 
 function hasCollidedWithSnake() {
@@ -207,7 +240,19 @@ function endGame() {
  */
 function makeApple() {
   // TODO 4, Part 2: Fill in this function's code block
+// make the apple jQuery Object and append it to the board
+apple.element = $("<div>").addClass("apple").appendTo(board);
 
+// get a random available row/column on the board
+var randomPosition = getRandomAvailablePosition();
+
+// initialize the row/column properties on the Apple Object
+apple.row = randomPosition.row;
+apple.column = randomPosition.column;
+
+// position the apple on the screen
+repositionSquare(apple);
+  
 
 
 }
