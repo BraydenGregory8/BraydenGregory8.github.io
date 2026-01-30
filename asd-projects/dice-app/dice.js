@@ -8,7 +8,16 @@ $("<div>")
   .css("position", "fixed")
   .css("top", 50)
   .css("left", 50)
-  .appendTo("#die");
+  .appendTo("#die1");
+  $("<div>")
+  .css("height", 15)
+  .css("width", 15)
+  .css("border-radius", 7.5)
+  .css("background-color", "black")
+  .css("position", "fixed")
+  .css("top", 50)
+  .css("left", 50)
+  .appendTo("#die2");
 
 
 function makeDot(top, left, elementID){
@@ -21,7 +30,9 @@ function makeDot(top, left, elementID){
   .css("top", top)
   .css("left", left)
   .appendTo(elementID);
+  
 }
+
 
   function rollDie(dieID) {
     $(dieID).empty();
@@ -56,8 +67,12 @@ if (randomNum === 1) {
   makeDot(50, 75, dieID); // middle left
 }}
 function handleClick(){
-  rollDie("#die");
+  rollDie("#die1");
 }
-$("#die").on("click", handleClick);
+$("#die1").on("click", handleClick);
 
+function handleClick(){
+  rollDie("#die2");
+}
+$("#die2").on("click", handleClick);
 });
