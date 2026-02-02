@@ -2,7 +2,7 @@
   height: 100px;
   width: 100px;
   border-radius: 10px;
-  background-color: rgb(188, 114, 114); /* Feel free to customize */
+  background-color: rgb(16, 16, 16); /* Feel free to customize */
   position: relative;
   
   
@@ -10,7 +10,8 @@
 #die2 {
   height: 100px;
   width: 100px;
-  background-color: lightgray; /* Feel free to customize */
+  background-color: rgb(16, 16, 16); /* Feel free to customize */
   position: relative;
-  left: 120px;
+  left: 100px;
+  border-radius: 10px;
 }
