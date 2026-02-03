@@ -23,15 +23,16 @@ body {
 }
 
 .snake {
-  background-color: green;
+  background-color: rgb(30, 0, 128);
   z-index: 2;
 }
 
 #snake-head {
-  background-color: darkgreen;
+  background-color: rgb(2, 40, 72);
 }
 
 .apple {
   background-color: red;
   z-index: 1;
+  border-radius: 10;
 }
