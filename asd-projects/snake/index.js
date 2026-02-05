@@ -113,7 +113,7 @@ function checkForNewDirection(event) {
 
   // FILL IN THE REST
 
-  // console.log(snake.head.direction);     // uncomment me!
+   console.log(snake.head.direction);     // uncomment me!
 }
 
 function moveSnake() {
@@ -125,7 +125,14 @@ function moveSnake() {
     stored in the Array snake.body and each part knows its current 
     column/row properties. 
   */
+for (var i = snake.body.length - 1; i > 0; i--) {
+    var currentSnakeSquare = snake.body[i];
+    var snakeSquareInFront = snake.body[i-1];
 
+    moveBodyAToBodyB(currentSnakeSquare, snakeSquareInFront);
+
+    repositionSquare(currentSnakeSquare);
+}
 
 
 
@@ -156,8 +163,13 @@ repositionSquare(snake.head)
 }
 
 // TODO 9: Create a new helper function
+function moveBodyAToBodyB (bodyA, bodyB ){
+  bodyA.row = bodyB.row;
+  bodyA.column = bodyB.column;
+  bodyA.direction = bodyB.direction;
+  
 
-
+}
 
 
 
@@ -327,7 +339,7 @@ snake.tail = snakeSquare;
 function handleKeyDown(event) {
   // TODO 7: make the handleKeyDown function register which key is pressed
 activeKey = event.which;
-console.log(activeKey);
+//console.log(activeKey);
 
   // If a valid direction key is pressed, start the game
   if (
