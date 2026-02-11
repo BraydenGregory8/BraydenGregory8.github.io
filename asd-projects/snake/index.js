@@ -56,6 +56,7 @@ makeSnakeSquare(10, 10); // Create the first square in the middle of the board
 makeSnakeSquare(10, 9); // Create a second square to the left of the first
 makeSnakeSquare(10, 8); // Create a third square to the left of the second
 snake.head = snake.body[0]; // Mark the first segment as the head
+
   // TODO 4, Part 3: initialize the apple
 makeApple(10,10)
   // TODO 6, Part 1: Initialize the interval
@@ -254,15 +255,13 @@ function hasCollidedWithSnake() {
     HINT: Each part of the snake's body is stored in the snake.body Array. The
     head and each part of the snake's body also knows its own row and column.
   */
-    
     for (var i = 1; i < snake.body.length; i++) {
-     var body = snake.body[i];
-  }
-    if (snake.head.row === snake.body.row && snake.head.coloumn === snake.body.column) {
-      return true;}
-      else{
- return false;
-      }
+     var segment = snake.body[i];
+if (snake.head.row === segment.row && snake.head.column === segment.column) {  
+  return true;
+    }
+}
+return false;
 }
 
 function endGame() {
@@ -399,6 +398,26 @@ function getRandomAvailablePosition() {
       not occupied by a snakeSquare in the snake's body. If it is then set 
       spaceIsAvailable to false so that a new position is generated.
     */
+function getRandomAvailablePosition() {
+    var spaceIsAvailable = false;
+    var randomPosition = {};
+
+    while (!spaceIsAvailable) {
+        randomPosition.column = Math.floor(Math.random() * COLUMNS);
+        randomPosition.row = Math.floor(Math.random() * ROWS);
+
+        spaceIsAvailable = true;
+
+        for (var i = 0; i < snake.length; i++) {
+            if (snake[i].column === randomPosition.column &&
+                snake[i].row === randomPosition.row) {
+                spaceIsAvailable = false;
+                break;
+            }
+        }
+    }
+    return randomPosition;
+}
 
 
 
