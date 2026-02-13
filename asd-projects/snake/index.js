@@ -12,7 +12,7 @@ var highScoreElement = $("#highScore");
 // Game Variables
 var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
-
+var isReversed = false;
 // TODO 4, Part 1: Create the apple variable
 const apple ={};
   
@@ -214,6 +214,26 @@ function handleAppleCollision() {
   // increase the score and update the score DOM element
   score++;
   scoreElement.text("Score: " + score);
+  if (score % 10 === 0 && score !== 0) {
+    isReversed = !isReversed;
+    
+    // Optional: Visual feedback so the player knows chaos has arrived
+    if (isReversed) {
+      board.css("border-color", "red");
+      console.log("Controls Reversed!");
+    } else {
+      board.css("border-color", "white");
+      console.log("Controls Normal!");
+    }
+  }
+
+  apple.element.remove();
+  makeApple();
+
+  var row = snake.tail.row;
+  var column = snake.tail.column;
+  makeSnakeSquare(row, column);
+}
 
   // Remove existing Apple and create a new one
   apple.element.remove();
@@ -224,7 +244,7 @@ function handleAppleCollision() {
   
   makeSnakeSquare(row, column);{
     // initialize a new snakeSquare Object
-const snakeSquare = {};
+ snakeSquare = {};
 
 // make the snakeSquare element and add it to the board
 snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
@@ -245,7 +265,6 @@ if (snake.body.length === 0) {
 snake.body.push(snakeSquare);
 snake.tail = snakeSquare;
   }
-}
 
 function hasCollidedWithSnake() {
   /* 
@@ -265,19 +284,16 @@ return false;
 }
 
 function endGame() {
-  // stop update function from running
   clearInterval(updateInterval);
-  started = false; // reset the started variable
-
-  // clear board of all elements
+  started = false;
+  isReversed = false; // Reset to normal controls
+  board.css("border-color", "white"); // Reset board color
+  
   board.empty();
-
-  // update the highScoreElement to display the highScore
   highScoreElement.text("High Score: " + calculateHighScore());
   scoreElement.text("Score: 0");
   score = 0;
 
-  // restart the game after 500 ms
   setTimeout(init, 500);
 }
 
@@ -352,19 +368,23 @@ snake.tail = snakeSquare;
 */
 function handleKeyDown(event) {
   // TODO 7: make the handleKeyDown function register which key is pressed
-activeKey = event.which;
-//console.log(activeKey);
+  var pressedKey = event.which;
 
-  // If a valid direction key is pressed, start the game
-  if (
-    event.which === KEY.LEFT ||
-    event.which === KEY.RIGHT ||
-    event.which === KEY.UP ||
-    event.which === KEY.DOWN
-  ) {
-    started = true; // the game starts when the first key is pressed
+  if (isReversed) {
+    if (pressedKey === KEY.UP) pressedKey = KEY.DOWN;
+    else if (pressedKey === KEY.DOWN) pressedKey = KEY.UP;
+    else if (pressedKey === KEY.LEFT) pressedKey = KEY.RIGHT;
+    else if (pressedKey === KEY.RIGHT) pressedKey = KEY.LEFT;
+  }
+
+  activeKey = pressedKey;
+
+  // Start the game logic
+  if (Object.values(KEY).includes(event.which)) {
+    started = true;
   }
 }
+
 
 /* Given a gameSquare (which may be a snakeSquare or the apple), position
  * the gameSquare on the screen.
@@ -388,7 +408,7 @@ function getRandomAvailablePosition() {
   var randomPosition = {};
 
   /* Generate random positions until one is found that doesn't overlap with the snake */
-  while (!spaceIsAvailable) {
+  if (!spaceIsAvailable) {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
@@ -402,7 +422,7 @@ function getRandomAvailablePosition() {
     var spaceIsAvailable = false;
     var randomPosition = {};
 
-    while (!spaceIsAvailable) {
+    if (!spaceIsAvailable) {
         randomPosition.column = Math.floor(Math.random() * COLUMNS);
         randomPosition.row = Math.floor(Math.random() * ROWS);
 
