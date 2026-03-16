@@ -10,6 +10,7 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  // refactoring magic numbers
   const KEY = {
   ENTER: 13,
   LEFT: 37,
@@ -17,15 +18,16 @@ function runProgram(){
   RIGHT: 39,
   DOWN: 40,
 };
-const walker = [
-  x = 0,
-  y = 0,
-  speedX = 0,
-  speedY = 0
-]
+
+
    
   // Game Item Objects
-
+const walker = {
+  x : 0,
+  y : 0,
+  speedX : 0,
+  speedY : 0
+}
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -36,7 +38,8 @@ const walker = [
 
   Note: You can have multiple event listeners for different types of events.
   */
-  $(document).on('keydown', handleKeyDown);                          
+  $(document).on('keydown', handleKeyDown); 
+  $(document).on('keyup', handleKeyUp);                          
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -48,7 +51,8 @@ const walker = [
   */
   function newFrame() {
     repositionGameItem()
-
+    wallCollisons()
+    redrawGameItem()
   }   
   
   /* 
@@ -58,17 +62,33 @@ const walker = [
   Note: You can have multiple event handlers for different types of events.
   */
   function handleKeyDown(event) {
-console.log(event.which);
+// console.log(event.which);
 if (event.which === KEY.LEFT) {
-  console.log("left pressed");
-}if (event.which === KEY.UP) {
+  console.log("left pressed")
+walker.speedX = -5
+} else if (event.which === KEY.UP) {
   console.log("up pressed");
-}if (event.which === KEY.RIGHT) {
+  walker.speedY = -5
+} else if (event.which === KEY.RIGHT) {
   console.log("right pressed");
-}if (event.which === KEY.DOWN) {
+  walker.speedX = 5
+} else if (event.which === KEY.DOWN) {
   console.log("down pressed");
+  walker.speedY = 5
 }
+
   }
+  function handleKeyUp(event){
+   if (event.which === KEY.LEFT || event.which=== KEY.RIGHT) {
+     walker.speedX = 0;
+  }
+  
+  // Check if the released key is the Right Arrow or 'd'
+  if (event.which === KEY.UP || event.which === KEY.DOWN) {
+    
+      walker.speedY = 0;
+  }
+}
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -84,10 +104,32 @@ if (event.which === KEY.LEFT) {
   }
   function repositionGameItem() {
   // Add the horizontal speed to the x-position
-  walker.speedX += walker.x;
+   walker.x += walker.speedX;
+  
   // Add the vertical speed to the y-position
-  walker.speedY += walker.y;
- 
+  walker.y += walker.speedY;
 }
+function redrawGameItem(){
+  // Set the vertical (y) position
+  $("#walker").css("top", walker.y )
+    // Set the horizontal (x) position
+    $("#walker").css("left", walker.x )
+    
+    console.log("Walker position:", walker.x, walker.y);
+  }
+ function wallCollisons() {
+  if (walker.x + 50 > $("#board").width()||walker.x < 0) {
+        walker.x -= walker.speedX; 
+    }
+   
+    if ( walker.y + 50 > $("#board").height() ||walker.y < 0) {
+        walker.y -= walker.speedY;
+    }
+    
+ }
+
+
 
 }
+
+
