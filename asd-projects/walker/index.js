@@ -127,6 +127,16 @@ function redrawGameItem(){
     }
     
  }
+ // Select the walker element and add a click event listener
+$("#walker").on("click", function() {
+    // Generate a random hex color using the provided logic
+    var randomColor = "#000000".replace(/0/g, function () { 
+        return (~~(Math.random() * 16)).toString(16); 
+    });
+
+    // Use jQuery's .css() function to change the color
+    $(this).css("background-color", randomColor);
+});
 
 
 
