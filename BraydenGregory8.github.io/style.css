@@ -1,0 +1,103 @@
+body {
+    background-image: url("Images/Beauty-Cast.jpg");
+    background-size: 95%;
+    color: rgb(251, 171, 0);
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#all-contents {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* navigation menu */
+nav {
+    background: rgb(255, 215, 0);
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    color: rgb(98, 5, 105);
+    flex: 1;
+    margin: 0;
+}
+
+#nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #ba3abe;
+}
+
+/* main container area beneath menu */
+main {
+    background: rgb(100, 8, 110);
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    margin-right: 25px;
+    padding: 10px;
+}
+
+.sidebar-img {
+    width: 200px;
+}
+
+.content {
+    flex: 1;
+    padding: 15px;
+}
+
+/* interests section styles */
+#interests {
+    border: 4px rgb(234, 162, 8) ridge;
+    padding: 8px;
+    margin-top: 20px;
+}
+
+h2, h3 {
+    margin: 0px;
+}
+/* Portfolio styles */
+.content h1 {
+  color: rgb(205, 169, 12);
+}
+
+#portfolio {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#portfolio li {
+  background:#b8a004;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+  background: #eee;
+}
+
+#portfolio a {
+  text-decoration: none;
+  color: #454545;
+}

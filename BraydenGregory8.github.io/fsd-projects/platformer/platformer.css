@@ -1,0 +1,16 @@
+body {
+  margin: 0px;
+  
+}
+
+canvas {
+  background-color: lightblue;
+  margin: 20px;
+  background-image: url("images/score_0.svg"); 
+  background-size: 97%;
+
+}
+
+img {
+  display: none;
+}

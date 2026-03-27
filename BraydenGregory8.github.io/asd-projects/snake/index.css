@@ -1,0 +1,42 @@
+
+body {
+  background-color: darkgreen;
+}
+
+#board {
+  width: 440px;
+  height: 440px;
+  border: 1px solid white;
+  background-color: black;
+}
+
+#score, #highScore {
+  color: white;
+}
+
+.snake, .apple {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  user-select: none;
+}
+
+.snake {
+  background-color: rgb(238, 237, 243); 
+  z-index: 2;
+}
+
+#snake-head {
+  background-color: rgb(2, 40, 72);
+}
+
+.apple {
+  background-color: red;
+  z-index: 1;
+  border-radius: 10;
+}
+body.snake{
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(255,255,255,0.2)
+}

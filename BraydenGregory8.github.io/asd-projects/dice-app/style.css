@@ -1,0 +1,17 @@
+#die1 {
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: rgb(16, 16, 16); /* Feel free to customize */
+  position: relative;
+  
+  
+}
+#die2 {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(16, 16, 16); /* Feel free to customize */
+  position: relative;
+  left: 100px;
+  border-radius: 10px;
+}
