@@ -20,7 +20,7 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
-applyFilter();
+applyFilter(reddify);
   
 
 
@@ -35,10 +35,17 @@ applyFilter();
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2, 3 & 5: Create the applyFilter function here
-function applyFilter(){
+function applyFilter(filterFunction){
   for (var i = 0; i < image.length; i++){
     for (var j = 0; j < image[i].length; j++){
     console.log(image[i][j]);
+    // Inside the inner loop (e.g., for j...)
+var pixel = image[i][j];
+var pixelArray = rgbStringToArray(pixel);
+// This is where I’ll modify the color values later
+filterFunction(pixelArray);
+var updatedPixel = rgbArrayToString(pixelArray);
+image[i][j] = updatedPixel;
     }
   }
 }
@@ -50,7 +57,12 @@ function applyFilter(){
 
 
 // TODO 4: Create reddify filter function
+function reddify(pixel) {
+  // Directly modify the first index (Red) of the [R, G, B] array
+  pixel[0] = 200;
+  
 
+}
 
 // TODO 7 & 8: Create more filter functions
 
