@@ -86,19 +86,19 @@ console.log(keepInBounds(125)); // should print 125
 // TODO 4: Create reddify filter function
 function reddify(pixel) {
   // Directly modify the first index (Red) of the [R, G, B] array
-  pixel[0] = 200;
+  pixel[RED] = 200;
   
 
 }
 
 // TODO 7 & 8: Create more filter functions
 function decreaseBlue(pixel) {
-  let newBlue = pixel[2] - 50;
-  pixel[2] = keepInBounds(newBlue);
+  let newBlue = pixel[BLUE] - 50;
+  pixel[BLUE] = keepInBounds(newBlue);
 }
 function increaseGreenByBlue(pixel) {
-  let newGreen = pixel[1] + pixel[2];
-  pixel[1] = keepInBounds(newGreen);
+  let newGreen = pixel[GREEN] + pixel[BLUE];
+  pixel[GREEN] = keepInBounds(newGreen);
 }
 
 
