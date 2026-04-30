@@ -33,9 +33,56 @@ async function bubbleSort(array) {
 }
 
 // TODO 3: Implement quickSort
+async function quickSort(array, left, right) {
+  // 3b-1: Check if the segment has more than one element
+  if (right - left > 0) {
+    
+    // 3b-2: Call the partition function and store the index
+    var index = await partition(array, left, right);
+
+    // 3b-3: Recursively call quickSort for the left side
+    if (left < index - 1) {
+      await quickSort(array, left, index - 1);
+    }
+
+    // 3b-4: Recursively call quickSort for the right side
+    if (index < right) {
+      await quickSort(array, index, right);
+    }
+  }
+}
 
 
 // TODOs 4 & 5: Implement partition
+async function partition(array, left, right) {
+  // 4b: Decide on a pivot using the middle element's value
+  var pivot = array[Math.floor((right + left) / 2)].value;
+
+  // 4c: Set up the outer loop to run as long as left < right
+  while (left < right) {
+    // Logic for TODO 5 will go here
+    // 5a: First inner while loop - move left index until a value >= pivot is found
+    while (array[left].value < pivot) {
+      left++;
+    }
+
+    // 5b: Second inner while loop - move right index until a value <= pivot is found
+    while (array[right].value > pivot) {
+      right--;
+    }
+
+    // 5c: Swap when ready
+    if (left < right) {
+      swap(array, left, right);
+      updateCounter(quickCounter);
+      await sleep();
+    }
+  
+  }
+
+  // 4d: Return the new partition index
+  return left + 1;
+}
 
 
 // TODO 1: Implement swap
