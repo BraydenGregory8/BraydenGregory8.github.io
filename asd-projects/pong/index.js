@@ -12,6 +12,32 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
+// 1. The Factory Function
+function GameObject(id) {
+  var gameItem = {};
+  
+  // Use jQuery to extract initial CSS values
+  gameItem.id = id;
+  gameItem.x = parseFloat($(id).css("left"));
+  gameItem.y = parseFloat($(id).css("top"));
+  gameItem.width = $(id).width();
+  gameItem.height = $(id).height();
+  
+  // Initialize speeds (can be updated later)
+  gameItem.speedX = 0;
+  gameItem.speedY = 0;
+  
+  return gameItem;
+}
+
+// 2. Initializing your game objects
+var paddleLeft = GameObject("#paddle-left");
+var paddleRight = GameObject("#paddle-right");
+var ball = GameObject("#ball");
+
+// 3. Example: Setting initial speeds for the ball
+ball.speedX = 2;
+ball.speedY = 2;
 
 
   // one-time setup
