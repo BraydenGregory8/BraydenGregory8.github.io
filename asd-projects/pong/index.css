@@ -16,30 +16,56 @@ body {
   width: 50px;
   height: 50px;
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
+/*   left: 100px; */  /* Uncomment if you want to set a "starting" position 
 /*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
 }
-#paddle-right {
-  /* appearance */
+/* The main game area */
+#board {
+  position: relative;
+  width: 800px;  /* Example size */
+  height: 400px; /* Example size */
+  background-color: black;
+}
+
+/* Left Paddle */
+#paddleLeft {
+  background-color: rgb(244, 200, 5);
+  width: 20px;
+  height: 80px;
+  position: absolute;
+  top: 160px;   /* Vertically centered */
+  left: 20px;   /* Spaced from left edge */
+}
+
+/* Right Paddle */
+#paddleRight {
+  background-color: rgb(205, 8, 188);
+  width: 20px;
+  height: 80px;
+  position: absolute;
+  top: 160px;   /* Vertically centered */
+  left: 760px;  /* Spaced from right edge */
+}
+
+/* The Ball */
+#ball {
   background-color: white;
   width: 20px;
   height: 20px;
-  border-radius: 10px;
-
-  /* positioning */
+  border-radius: 10px; /* Makes it a circle */
   position: absolute;
-  top: 100px;
-  left: 400px;
+  top: 190px;
+  left: 390px;
 }
-#paddle-left {
-  /* appearance */
-  background-color: white;
-  width: 20px;
-  height: 20px;
-  border-radius: 10x;
 
-  /* positioning */
+/* Score displays */
+#score1, #score2 {
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
   position: absolute;
-  top: 100px;
-  left: 60px;
+  top: 20px;
 }
+
+#score1 { left: 200px; }
+#score2 { left: 560px; }
