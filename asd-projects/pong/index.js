@@ -131,10 +131,11 @@ ball.speedY = 5;
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
-
+    alert("Game Over")
     // turn off event handlers
     $(document).off();
   }
+
     function startBall() {
     // 1. Center the ball on the board
     
@@ -146,7 +147,9 @@ ball.speedY = 5;
     ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
     // speedY can be any random speed between -5 and 5
     ball.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+   checkScore(score1,score2) 
   }
+
 function moveObject(obj) {
   // Update the data positions based on speed
   obj.x += obj.speedX;
@@ -181,6 +184,8 @@ function wallCollision(obj) {
       startBall(); 
     }
   } 
+
+
   else if (obj.x + obj.width > BOARD_WIDTH) {
     // Ball hit right wall: Player 1 scores!
     obj.x = BOARD_WIDTH - obj.width;
@@ -214,6 +219,7 @@ function wallCollision(obj) {
     $("#score1").text(score1);       // Update HTML
     startBall();                     // Reset ball
   }
+  
 }
 function doCollide(obj1, obj2) {
   // Calculate edges of object 1
@@ -238,5 +244,13 @@ function doCollide(obj1, obj2) {
     return false;
   }
 }
+
+function checkScore(score1, score2) {
+  const pointsToWin = 10; 
+  if (score1 >= pointsToWin || score2 >= pointsToWin) {
+    endGame();
+  }
+}
+
 
 }
